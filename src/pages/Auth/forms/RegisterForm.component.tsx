@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
-import { RegisterAction } from '../../../utils/authUtils';
+import { useAuth } from '../../../context/AuthContext';
 import styles from './AuthForm.module.css'
 
 // Define the shape of form values using TypeScript interface
@@ -22,8 +22,8 @@ const RegisterSchema = Yup.object().shape({
 });
 
 export const RegisterForm: () => JSX.Element = () => {
-
-    const navigate = useNavigate();  // Initialize navigate
+    const { register } = useAuth();
+    const navigate = useNavigate();
 
 
     // Initial form values
@@ -36,7 +36,7 @@ export const RegisterForm: () => JSX.Element = () => {
         }) => {
         console.log(values);
         try {
-            const data = await RegisterAction({...values})
+            const data = await register(values.username, values.email, values.password)
             console.log({data});
             navigate('/home')
         } catch (error) {

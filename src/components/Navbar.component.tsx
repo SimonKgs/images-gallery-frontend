@@ -2,17 +2,12 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 
 import logo from '../assets/react.svg'
-import { useAuth } from '../hooks/useAuth';
+import { useAuth } from '../context/AuthContext';
 
 
 export const Navbar: React.FC = () => {
 
-    const { isAuthenticated, loading } = useAuth();
-
-
-    if (loading) {
-      return <div>Loading...</div>;
-    }
+    const { isAuthenticated, logout } = useAuth();
 
 
     return (
@@ -28,9 +23,14 @@ export const Navbar: React.FC = () => {
                     </li>
                     {
                         (isAuthenticated) ?
-                            (<li>
-                                <NavLink to="/user" className={ ({ isActive}) => isActive ? 'nav-active' : ''}>User</NavLink>
-                            </li>)
+                            (<>
+                                <li>
+                                    <NavLink to="/user" className={ ({ isActive}) => isActive ? 'nav-active' : ''}>User</NavLink>
+                                </li>
+                                <button onClick={() => logout()}>
+                                    salir
+                                </button>
+                            </>)
                             :
                             (<li>
                                 <NavLink to="/auth" className={ ({ isActive}) => isActive ? 'nav-active' : ''}>Login</NavLink>

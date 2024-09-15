@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
-import { loginAction } from '../../../utils/authUtils';
+import { useAuth } from '../../../context/AuthContext';
 import styles from './AuthForm.module.css'
 
 // Define the shape of form values using TypeScript interface
@@ -19,13 +19,13 @@ const LoginSchema = Yup.object().shape({
 });
 
 export const LoginForm: () => JSX.Element = () => {
-
+    const { login } = useAuth();
     const navigate = useNavigate();  // Initialize navigate
 
 
     // Initial form values
     const initialValues: LoginFormValues = { email: '', password: '' };
-
+ 
     const handleSubmit = async(
         values: LoginFormValues, 
         { setSubmitting }: { 
@@ -33,7 +33,7 @@ export const LoginForm: () => JSX.Element = () => {
         }) => {
         console.log(values);
         try {
-            const data = await loginAction({...values})
+            const data = await login(values.email, values.password)
             console.log({data});
             navigate('/home')
         } catch (error) {
