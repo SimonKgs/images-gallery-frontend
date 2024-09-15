@@ -10,6 +10,6 @@ export const ProtectedRoute: React.FC = () => {
         return <div>Loading...</div>; // Show a loading indicator
     }
 
-    return isAuthenticated ? <Outlet /> : <Navigate to="/login" />;
+    return isAuthenticated ? <Outlet /> : <Navigate to="/auth" />;
 };
 

@@ -27,8 +27,8 @@ export const Navbar: React.FC = () => {
                                 <li>
                                     <NavLink to="/user" className={ ({ isActive}) => isActive ? 'nav-active' : ''}>User</NavLink>
                                 </li>
-                                <button onClick={() => logout()}>
-                                    salir
+                                <button className='logout-button' onClick={() => logout()}>
+                                    Logout
                                 </button>
                             </>)
                             :

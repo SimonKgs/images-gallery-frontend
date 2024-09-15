@@ -71,3 +71,19 @@ nav li a {
   color: var(--terciary-grey);
   transition: all .3s ease-out;
 }
+
+.logout-button {
+  background-color: var(--primary-grey);
+  color: var(--text-white);
+  border: none;
+  border-radius: 5px;
+  padding: 5px 20px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in, color 0.2s ease-in;
+}
+
+.logout-button:hover {
+  background-color: var(--error-color);
+  color: var(--terciary-grey);
+
+}
