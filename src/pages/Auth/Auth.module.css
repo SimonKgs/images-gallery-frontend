@@ -19,14 +19,36 @@
 
 .auth-header {
     display: flex;
-    gap: 1vw;
     border-bottom: 1px solid;
     width: 100%;
-    align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 }
 
-.auth-header span, .auth-header img {
+.auth-header-info {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.auth-header button {
+    border: none;
+    background-color: var(--terciary-grey);
+    color: var(--text-white);
+    font-size: 18px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: color 0.2s ease-in, background-color 0.2s ease-in;
+    border-radius: 10px;
+    padding: 0.5rem;
+}
+
+.auth-header button:hover {
+    color: var(--terciary-grey);
+    background-color: var(--secondary-grey);
+}
+
+
+.auth-header span, .auth-header img, .auth-header button {
     margin-bottom: 1vh;
 }
 

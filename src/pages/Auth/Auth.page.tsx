@@ -29,10 +29,12 @@ export const Auth: React.FC = () => {
       <div className={styles['auth-main-container']}>
         <div className={styles.auth}>
           <div className={styles["auth-header"]}>
-            <img src={logo} alt='react logo' />
-            <span>{isRegistering ? 'Register' : 'Login'}</span>
+            <div className={styles["auth-header-info"]}>
+              <img src={logo} alt='react logo' />
+              <span>{isRegistering ? 'Register' : 'Login'}</span>
+            </div>
             <button onClick={toggleForm}>
-              {isRegistering ? 'Login' : 'Register'}
+              {isRegistering ? 'Go to Login' : 'Go to Register'}
             </button>
           </div>
           {isRegistering ? <RegisterForm /> : <LoginForm />}

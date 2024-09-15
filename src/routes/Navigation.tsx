@@ -18,7 +18,7 @@ export const Navigation = () => {
                 <Route element={<ProtectedRoute />}>
                   <Route path='user' element={<h1>User page</h1>} />
                 </Route>
-                  <Route path='login' element={<Auth />} />
+                <Route path='auth' element={<Auth />} />
 
                 <Route path='/*' element={<Navigate to="home" replace />} />
             </Routes>

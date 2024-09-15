@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
-import { loginAction } from '../../../utils/authUtils';
+import { RegisterAction } from '../../../utils/authUtils';
 import styles from './AuthForm.module.css'
 
 // Define the shape of form values using TypeScript interface
@@ -15,7 +15,7 @@ interface RegisterFormValues {
 
 // Yup validation schema
 const RegisterSchema = Yup.object().shape({
-    username: Yup.string().min(6, 'name must be between 3 and 20 characters')
+    username: Yup.string().min(3, 'name must be between 3 and 20 characters')
         .max(20, 'name must be between 3 and 20 characters').required('Required'),
     email: Yup.string().email('Invalid email').required('Required'),
     password: Yup.string().min(6, 'Password must be at least 6 characters').required('Required'),
@@ -36,7 +36,7 @@ export const RegisterForm: () => JSX.Element = () => {
         }) => {
         console.log(values);
         try {
-            const data = await loginAction({...values})
+            const data = await RegisterAction({...values})
             console.log({data});
             navigate('/home')
         } catch (error) {
