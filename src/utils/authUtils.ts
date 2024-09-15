@@ -75,3 +75,4 @@ export const RegisterAction = async ({username, email, password }: RegisterProps
     throw error;
   }
 };
+
