@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { uploadImageService } from '../services/image.service';
 
 
-export const ImageUpload: React.FC = () => {
+export const UploadImage: React.FC = () => {
     const [title, setTitle] = useState('');
     const [file, setFile] = useState<File | null>(null);
 
@@ -20,7 +20,6 @@ export const ImageUpload: React.FC = () => {
     };
 
     
-    // Handle form submission
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (!file) {
