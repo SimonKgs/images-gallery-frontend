@@ -27,6 +27,8 @@ export const loginAction = async ({ email, password }: loginProps) => {
       const data = await response.json();
       localStorage.setItem('token', data.token);
       localStorage.setItem('id', data.id);
+      localStorage.setItem('user', data.username)
+
       return data;
   
     } catch (error) {
@@ -44,11 +46,6 @@ interface RegisterProps {
 // * REGISTER
 export const RegisterAction = async ({username, email, password }: RegisterProps) => {
   const registerUrl = `${authUrl}/register`;
-
-  console.log('username', username);
-  console.log('email', email);
-  console.log('password', password);
-  
 
   try {
     const response = await fetch(registerUrl, {
@@ -68,6 +65,7 @@ export const RegisterAction = async ({username, email, password }: RegisterProps
     const data = await response.json();
     localStorage.setItem('token', data.token);
     localStorage.setItem('id', data.id);
+    localStorage.setItem('user', data.username)
     return data;
 
   } catch (error) {

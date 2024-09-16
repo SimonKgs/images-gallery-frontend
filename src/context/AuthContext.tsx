@@ -56,7 +56,8 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     const login = async (email: string, password: string) => {
         try {
             const data = await loginAction({ email, password });
-            setAuthState({ isAuthenticated: true, user: { id: data.id }, loading: false });
+            
+            setAuthState({ isAuthenticated: true, user: { id: data.id, username: data.username }, loading: false });
         } catch {
             setAuthState({ isAuthenticated: false, loading: false });
         }
@@ -65,7 +66,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     const register = async (username: string, email: string, password: string) => {
         try {
             const data = await RegisterAction({ username, email, password });
-            setAuthState({ isAuthenticated: true, user: { id: data.id }, loading: false });
+            setAuthState({ isAuthenticated: true, user: { id: data.id, username: data.username }, loading: false });
         } catch {
             setAuthState({ isAuthenticated: false, loading: false });
         }
