@@ -1,16 +1,14 @@
 const baseUrl = 'http://localhost:5000'
 
-
+// * GET IMAGES
 export const getUserImages = async() => {
 
     const userId = localStorage.getItem('id');
     const token = localStorage.getItem('token')
 
-
     if (!userId || !token ) return
 
     const getImagesUrl = `${baseUrl}/images/user/${userId}`
-
 
     try {
         const response = await fetch(getImagesUrl, {
@@ -34,6 +32,7 @@ export const getUserImages = async() => {
 }
 
 
+// * EDIT
 export const editImage = async(imgId: string, newTitle: string) => {
 
     const userId = localStorage.getItem('id');
@@ -71,6 +70,7 @@ export const editImage = async(imgId: string, newTitle: string) => {
 }
 
 
+// * DELETE
 export const deleteImage = async(imgId: string) => {
 
     const userId = localStorage.getItem('id');
@@ -102,3 +102,29 @@ export const deleteImage = async(imgId: string) => {
         console.error("There was an error deleting the image");
       }
 }
+
+
+// * UPLOAD
+export const uploadImageService = async (formData: FormData) => {
+    const token = localStorage.getItem('token');
+    const userId = localStorage.getItem('id');
+
+    if (!token || !userId) {
+      throw new Error('Authentication token or user ID not found');
+    }
+
+    const response = await fetch(`${baseUrl}/images/user/${userId}`, {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'Authorization': `Bearer ${token}`,
+      },
+    });
+
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.message || 'Error uploading image');
+    }
+
+    return response.json();
+};

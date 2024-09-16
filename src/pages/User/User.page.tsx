@@ -3,6 +3,7 @@ import { getCurrentUser } from '../../services/user.service';
 import { UserImages } from '../../components/UserImages.component';
 import styles from './User.module.css'
 import { useAuth } from '../../context/AuthContext';
+import { ImageUpload } from '../../components/UploadImage.component';
 
 export interface CurrentUser {
     name: string;
@@ -34,6 +35,7 @@ export const User: React.FC = () => {
                 user &&
                 <h1>Welcome { user.name }</h1>
             }
+            <ImageUpload />
             <UserImages />
             
         </div>
