@@ -1,78 +1,78 @@
-interface loginProps {
-    email: string,
-    password: string,
-}
+// interface loginProps {
+//     email: string,
+//     password: string,
+// }
 
-const authUrl = 'http://localhost:5000/auth'
+// const authUrl = 'http://localhost:5000/auth'
 
-// LOGIN
-export const loginAction = async ({ email, password }: loginProps) => {
-    const loginUrl = `${authUrl}/login`;
+// // LOGIN
+// export const loginAction = async ({ email, password }: loginProps) => {
+//     const loginUrl = `${authUrl}/login`;
 
-    try {
-      const response = await fetch(loginUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password }),
-      });
+//     try {
+//       const response = await fetch(loginUrl, {
+//         method: 'POST',
+//         headers: {
+//           'Content-Type': 'application/json',
+//         },
+//         body: JSON.stringify({ email, password }),
+//       });
 
   
-      if (!response.ok) {
-        const errorText = await response.text(); // Read the error response
-        throw new Error(`Response status: ${response.status}. Message: ${errorText}`);
-      }
+//       if (!response.ok) {
+//         const errorText = await response.text(); // Read the error response
+//         throw new Error(`Response status: ${response.status}. Message: ${errorText}`);
+//       }
   
-      const data = await response.json();
-      localStorage.setItem('token', data.token);
-      localStorage.setItem('id', data.id);
-      return data;
+//       const data = await response.json();
+//       localStorage.setItem('token', data.token);
+//       localStorage.setItem('id', data.id);
+//       return data;
   
-    } catch (error) {
-      console.error("Login failed:", error);
-      throw error;
-    }
-};
+//     } catch (error) {
+//       console.error("Login failed:", error);
+//       throw error;
+//     }
+// };
 
-interface RegisterProps {
-  username: string;
-  email: string,
-  password: string,
-}
+// interface RegisterProps {
+//   username: string;
+//   email: string,
+//   password: string,
+// }
 
-// TODO: REGISTER
-export const RegisterAction = async ({username, email, password }: RegisterProps) => {
-  const registerUrl = `${authUrl}/register`;
+// // * REGISTER
+// export const RegisterAction = async ({username, email, password }: RegisterProps) => {
+//   const registerUrl = `${authUrl}/register`;
 
-  console.log('username', username);
-  console.log('email', email);
-  console.log('password', password);
+//   console.log('username', username);
+//   console.log('email', email);
+//   console.log('password', password);
   
 
-  try {
-    const response = await fetch(registerUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({username, email, password }),
-    });
+//   try {
+//     const response = await fetch(registerUrl, {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//       body: JSON.stringify({username, email, password }),
+//     });
 
 
-    if (!response.ok) {
-      const errorText = await response.text(); // Read the error response
-      throw new Error(`Response status: ${response.status}. Message: ${errorText}`);
-    }
+//     if (!response.ok) {
+//       const errorText = await response.text(); // Read the error response
+//       throw new Error(`Response status: ${response.status}. Message: ${errorText}`);
+//     }
 
-    const data = await response.json();
-    localStorage.setItem('token', data.token);
-    localStorage.setItem('id', data.id);
-    return data;
+//     const data = await response.json();
+//     localStorage.setItem('token', data.token);
+//     localStorage.setItem('id', data.id);
+//     return data;
 
-  } catch (error) {
-    console.error("Login failed:", error);
-    throw error;
-  }
-};
+//   } catch (error) {
+//     console.error("Login failed:", error);
+//     throw error;
+//   }
+// };
 

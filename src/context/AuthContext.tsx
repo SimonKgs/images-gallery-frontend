@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect, ReactNode } from 'react';
-import { loginAction, RegisterAction } from '../utils/authUtils';
+import { loginAction, RegisterAction } from '../services/auth.service';
 
 // Define the type for authentication context value
 interface AuthContextType {

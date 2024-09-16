@@ -5,6 +5,7 @@ import { Navbar } from '../components/Navbar.component'
 
 import { ProtectedRoute } from '../components/ProtectedRoute'
 import { Auth } from '../pages/Auth/Auth.page'
+import { UserRoutes } from './UserRoutes'
 
 export const Navigation = () => {
   return (
@@ -16,7 +17,7 @@ export const Navigation = () => {
                 <Route path='about' element={<h1>About page</h1>} />
                 <Route path='home' element={<h1>Home page</h1>} />
                 <Route element={<ProtectedRoute />}>
-                  <Route path='user' element={<h1>User page</h1>} />
+                  <Route path='user/*' element={<UserRoutes />} />
                 </Route>
                 <Route path='auth' element={<Auth />} />
 
