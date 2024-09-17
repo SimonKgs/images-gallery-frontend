@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
  
 
-import { Navbar } from '../components/Navbar.component'
+import { Navbar } from '../components/Navbar/Navbar.component'
 
 import { ProtectedRoute } from '../components/ProtectedRoute'
 import { Auth } from '../pages/Auth/Auth.page'

@@ -87,3 +87,33 @@ nav li a {
   color: var(--terciary-grey);
 
 }
+
+.hamburger-menu {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+      display: none;
+      flex-direction: column;
+      gap: 1rem;
+      position: absolute;
+      top: 80px;
+      right: 20px;
+      background-color: var(--secondary-grey);
+      padding: 2rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      border-radius: 8px;
+      text-align: center;
+  }
+
+  /* Show the nav when open */
+  .nav-links.open {
+      display: flex;
+  }
+
+  /* Hamburger menu visible on mobile */
+  .hamburger-menu {
+      display: flex;
+  }
+}

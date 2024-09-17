@@ -22,6 +22,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    cursor: pointer;
 }
 
 .image-container {
@@ -47,4 +48,12 @@
 .image-card p {
     font-weight: 700;
     text-transform: capitalize;
+}
+
+
+@media (max-width: 768px) {
+    .image-card {
+        width: 100%;
+    }
+
 }
