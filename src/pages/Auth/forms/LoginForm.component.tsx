@@ -31,7 +31,7 @@ export const LoginForm: () => JSX.Element = () => {
         { setSubmitting }: { 
             setSubmitting: (isSubmitting: boolean) => void
         }) => {
-        console.log(values);
+
         try {
             const data = await login(values.email, values.password)
             console.log({data});

@@ -34,7 +34,7 @@ export const RegisterForm: () => JSX.Element = () => {
         { setSubmitting }: { 
             setSubmitting: (isSubmitting: boolean) => void
         }) => {
-        console.log(values);
+        
         try {
             const data = await register(values.username, values.email, values.password)
             console.log({data});
