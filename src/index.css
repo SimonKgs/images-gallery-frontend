@@ -11,6 +11,7 @@
 }
 
 html,body {
+  height: 100%;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -37,12 +38,13 @@ code {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 1rem 2rem;
+  padding: 10px 2rem;
 }
 
 nav {
   background-color: var(--secondary-grey);
   width: 100%;
+  height: 5rem;
 }
 
 nav img {
@@ -90,6 +92,17 @@ nav li a {
 
 .hamburger-menu {
   display: none;
+}
+
+/* FOOTER */
+.footer-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 5vh;
+  bottom: 0;
+  background-color: #000000;
 }
 
 @media (max-width: 768px) {

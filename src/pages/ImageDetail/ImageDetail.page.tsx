@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { deleteImage, editImage } from '../../services/image.service';
 
 import styles from './ImageDetail.module.css'
@@ -60,6 +60,7 @@ export const ImageDetail = () => {
                 <button className={styles["delete-image-button"]} onClick={handleDelete}>Delete Image</button>
             </div>
             <img src={image.image} alt={image.title} />
+            <Link className={styles["edit-image-link"]} to={"/user"}>Come back to user page</Link>
         </div>
     );
 };

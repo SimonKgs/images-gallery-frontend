@@ -6,6 +6,8 @@ import { Navbar } from '../components/Navbar/Navbar.component'
 import { ProtectedRoute } from '../components/ProtectedRoute'
 import { Auth } from '../pages/Auth/Auth.page'
 import { UserRoutes } from './UserRoutes'
+import { Footer } from '../components/Footer.component'
+import { Home } from '../pages/Home/Home.page'
 
 export const Navigation = () => {
   return (
@@ -15,7 +17,7 @@ export const Navigation = () => {
 
             <Routes>
                 <Route path='about' element={<h1>About page</h1>} />
-                <Route path='home' element={<h1>Home page</h1>} />
+                <Route path='home' element={<Home />} />
                 <Route element={<ProtectedRoute />}>
                   <Route path='user/*' element={<UserRoutes />} />
                 </Route>
@@ -24,6 +26,7 @@ export const Navigation = () => {
                 <Route path='/*' element={<Navigate to="home" replace />} />
             </Routes>
         </div>
+        <Footer />
     </BrowserRouter>
   )
 }
