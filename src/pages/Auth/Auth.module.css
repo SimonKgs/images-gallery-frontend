@@ -47,6 +47,10 @@
     background-color: var(--secondary-grey);
 }
 
+.auth-header img {
+    width: 40px;
+    margin-left: 10px;
+}
 
 .auth-header span, .auth-header img, .auth-header button {
     margin-bottom: 1vh;

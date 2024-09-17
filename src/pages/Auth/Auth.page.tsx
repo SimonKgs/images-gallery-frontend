@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 import styles from './Auth.module.css'
-import logo from '../../assets/react.svg'
+import logo from '../../assets/icon.svg'
 import { LoginForm } from './forms/LoginForm.component'
 import { RegisterForm } from './forms/RegisterForm.component';
 import { useAuth } from '../../hooks/useAuth';

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import logo from '../../assets/react.svg';
+import logo from '../../assets/icon.svg';
 import hambuguerMenu from '../../assets/menu-svgrepo.svg';
 import { useAuth } from '../../context/AuthContext';
 
