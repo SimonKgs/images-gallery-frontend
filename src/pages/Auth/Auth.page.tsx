@@ -4,7 +4,7 @@ import styles from './Auth.module.css'
 import logo from '../../assets/icon.svg'
 import { LoginForm } from './forms/LoginForm.component'
 import { RegisterForm } from './forms/RegisterForm.component';
-import { useAuth } from '../../hooks/useAuth';
+import { useAuth } from '../../context/AuthContext';
 import { Navigate } from 'react-router-dom';
 
 export const Auth: React.FC = () => {
