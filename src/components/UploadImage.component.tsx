@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { uploadImageService } from '../services/image.service';
 
+import styles from '../pages/User/User.module.css'
+
 
 interface UploadImageProps {
     onImageUploadSuccess: () => void;
@@ -38,6 +40,8 @@ export const UploadImage: React.FC<UploadImageProps> = ({ onImageUploadSuccess }
         try {
             const response = await uploadImageService(formData);
             console.log('Image uploaded:', response);
+            setTitle('');
+            setFile(null);
             onImageUploadSuccess();
         } catch (error) {
             console.error('Error uploading image:', error);
@@ -45,26 +49,39 @@ export const UploadImage: React.FC<UploadImageProps> = ({ onImageUploadSuccess }
     };
 
     return (
-        <form onSubmit={handleSubmit} encType="multipart/form-data">
-            <label htmlFor="title">Title:</label>
-            <input
-                type="text"
-                id="title"
-                name="title"
-                value={title}
-                onChange={handleTitleChange}
-                required
-            />
-            <label htmlFor="image">Upload Image:</label>
-            <input
-                type="file"
-                id="image"
-                name="image"
-                accept="image/*"
-                onChange={handleFileChange}
-                required
-            />
-            <button type="submit">Upload</button>
-        </form>
+        <div className={styles['uploads-container']}>
+            <h2>Upload new image</h2>
+            <form onSubmit={handleSubmit} encType="multipart/form-data" className={styles['uploads-form']}>
+                <div className={styles['uploads-field']}>
+                    <label htmlFor="title">Image Title</label>
+                    <input
+                        type="text"
+                        id="title"
+                        name="title"
+                        value={title}
+                        onChange={handleTitleChange}
+                        required
+                    />
+                </div>
+
+                <div className={styles['uploads-field']}>
+                    <label htmlFor="image">Upload Image</label>
+                    {/* Custom button styled to replace the input file's default appearance */}
+                    <label htmlFor="image" className={styles["custom-file-upload"]}>
+                        Select File
+                    </label>
+                    <input
+                        type="file"
+                        id="image"
+                        name="image"
+                        accept="image/*"
+                        onChange={handleFileChange}
+                        required
+                    />
+                </div>
+                
+                <button type="submit">Upload</button>
+            </form>
+        </div>
     );
 };
