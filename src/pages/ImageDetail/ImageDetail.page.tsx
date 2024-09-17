@@ -1,8 +1,15 @@
 import { useState, useEffect } from 'react';
 import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
+
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+
 import { deleteImage, editImage } from '../../services/image.service';
 
 import styles from './ImageDetail.module.css'
+
+const MySwal = withReactContent(Swal);
+
 
 export const ImageDetail = () => {
     const location = useLocation();
@@ -29,6 +36,13 @@ export const ImageDetail = () => {
     const handleSave = async() => {
         try {
             await editImage(image._id, title);
+            MySwal.fire({
+                title: 'Success!',
+                text: 'Title updated!.',
+                icon: 'success',
+                timer: 1200,
+                showConfirmButton: false,
+            });
             navigate('/user');
         } catch (err) {
             console.error('Error editing image:', err);
@@ -38,6 +52,13 @@ export const ImageDetail = () => {
     const handleDelete = async() => {
         try {
             await deleteImage(image._id);
+            MySwal.fire({
+                title: 'Success!',
+                text: 'Image deleted!.',
+                icon: 'success',
+                timer: 1200,
+                showConfirmButton: false,
+            });
             navigate('/user');
         } catch (err) {
             console.error('Error deleting image:', err);

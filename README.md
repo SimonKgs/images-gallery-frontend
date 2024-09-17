@@ -96,6 +96,8 @@ Para este punto empezaré explicando sin entrar en detalle las dependencias del 
 3. react-dom: Se encarga de manipular el DOM en aplicaciones React.
 4. react-router-dom: Maneja la navegación y las rutas en React.
 5. yup: Validación de esquemas para formularios, a menudo usado junto a Formik.
+6. sweetalert2: Muestra alertas modales personalizables y atractivas.
+7. sweetalert2-react-content: Integra SweetAlert2 con React de manera sencilla.
 
 
 - Dependencias de desarrollo

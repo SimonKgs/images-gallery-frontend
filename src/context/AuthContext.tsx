@@ -1,5 +1,11 @@
 import React, { createContext, useState, useEffect, ReactNode } from 'react';
+
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+
 import { loginAction, RegisterAction } from '../services/auth.service';
+
+
 
 // Define the type for authentication context value
 interface AuthContextType {
@@ -11,8 +17,10 @@ interface AuthContextType {
     logout: () => void;
 }
 
+
 // Create the context with default values
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
+const MySwal = withReactContent(Swal);
 
 // Define the provider component
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
@@ -43,6 +51,12 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
                     const data = await response.json();
                     setAuthState({ isAuthenticated: data.ok, user: data, loading: false });
                 } else {
+                    MySwal.fire({
+                        title: 'Authentication Failed',
+                        text: 'An error occurred while authenticating the user. Please log in.',
+                        icon: 'error',
+                        confirmButtonText: 'OK',
+                    });
                     setAuthState({ isAuthenticated: false, loading: false });
                 }
             } catch {
@@ -59,6 +73,12 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
             
             setAuthState({ isAuthenticated: true, user: { id: data.id, username: data.username }, loading: false });
         } catch {
+            MySwal.fire({
+                title: 'Login Failed',
+                text: 'An error occurred while logging in. Please try again.',
+                icon: 'error',
+                confirmButtonText: 'OK',
+            });
             setAuthState({ isAuthenticated: false, loading: false });
         }
     };
@@ -68,6 +88,12 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
             const data = await RegisterAction({ username, email, password });
             setAuthState({ isAuthenticated: true, user: { id: data.id, username: data.username }, loading: false });
         } catch {
+            MySwal.fire({
+                title: 'Registration Failed',
+                text: 'An error occurred during registration. Please try again.',
+                icon: 'error',
+                confirmButtonText: 'OK',
+              });
             setAuthState({ isAuthenticated: false, loading: false });
         }
     };

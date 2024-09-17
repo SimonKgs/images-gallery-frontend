@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
-import { uploadImageService } from '../services/image.service';
 
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+
+
+import { uploadImageService } from '../services/image.service';
 import styles from '../pages/User/User.module.css'
 
+const MySwal = withReactContent(Swal);
 
 interface UploadImageProps {
     onImageUploadSuccess: () => void;
@@ -42,6 +47,13 @@ export const UploadImage: React.FC<UploadImageProps> = ({ onImageUploadSuccess }
             console.log('Image uploaded:', response);
             setTitle('');
             setFile(null);
+            MySwal.fire({
+                title: 'Success!',
+                text: 'Image successfull uploaded!.',
+                icon: 'success',
+                timer: 1200,
+                showConfirmButton: false,
+            });
             onImageUploadSuccess();
         } catch (error) {
             console.error('Error uploading image:', error);
