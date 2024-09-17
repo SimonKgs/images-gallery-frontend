@@ -4,15 +4,17 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    padding: 30px 0;
+    text-align: center;
 }
 
 .home-container img {
-    height: 30vh;
-    width: 30vw;
+    height: 20vh;
+    width: 20vw;
 }
 
 .home-info-container {
-    width: 30vw;
+    max-width: 1000px;
 }
 
 .home-info-container span {
