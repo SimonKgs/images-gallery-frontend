@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { deleteImage, editImage } from '../../services/image.service';
 
+import styles from './ImageDetail.module.css'
+
 export const ImageDetail = () => {
     const location = useLocation();
     const navigate = useNavigate(); 
@@ -43,19 +45,21 @@ export const ImageDetail = () => {
     }
 
     return (
-        <div>
+        <div className={styles["edit-image-page-container"]}>
             <h1>Edit Image</h1>
             <h2>{ title }</h2>
-            <div>
-                <input 
+            <div className={styles["edit-image-controls-container"]}>
+                <label htmlFor="edit-field">Image Title:</label>
+                <input
+                    id='edit-field'
                     type="text" 
                     value={title} 
                     onChange={handleTitleChange} 
                 />
-                <button onClick={handleSave}>Change title</button>
-                <button onClick={handleDelete}>Delete Image</button>
+                <button className={styles["edit-image-button"]} onClick={handleSave}>Change title</button>
+                <button className={styles["delete-image-button"]} onClick={handleDelete}>Delete Image</button>
             </div>
-            <img height={10} src={image.image} alt={image.title} />
+            <img src={image.image} alt={image.title} />
         </div>
     );
 };
