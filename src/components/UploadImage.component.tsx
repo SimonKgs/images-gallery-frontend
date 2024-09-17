@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import { uploadImageService } from '../services/image.service';
 
 
-export const UploadImage: React.FC = () => {
+interface UploadImageProps {
+    onImageUploadSuccess: () => void;
+}
+
+export const UploadImage: React.FC<UploadImageProps> = ({ onImageUploadSuccess }) => {
     const [title, setTitle] = useState('');
     const [file, setFile] = useState<File | null>(null);
 
@@ -34,6 +38,7 @@ export const UploadImage: React.FC = () => {
         try {
             const response = await uploadImageService(formData);
             console.log('Image uploaded:', response);
+            onImageUploadSuccess();
         } catch (error) {
             console.error('Error uploading image:', error);
         }

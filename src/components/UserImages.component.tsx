@@ -4,8 +4,11 @@ import styles from '../pages/User/User.module.css'
 import { getUserImages } from '../services/image.service';
 import { useNavigate } from 'react-router-dom';
 
+interface UserImagesProps {
+  refreshImages: boolean;
+}
 
-export const UserImages: React.FC = () => {
+export const UserImages: React.FC<UserImagesProps> = ({ refreshImages }) => {
 
     const [images, setImages] = useState<Image[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
@@ -32,7 +35,7 @@ export const UserImages: React.FC = () => {
         };
 
         fetchImages();
-    }, []);
+    }, [refreshImages]);
 
     if (loading) return <div>Loading...</div>;
     if (error) return <div>{error}</div>;
